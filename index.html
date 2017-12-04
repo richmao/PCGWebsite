@@ -2,6 +2,19 @@
 <head>
   <script type='text/javascript' src='tracery.js' ></script> 
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBIoiMyPeSKOVTDuvKPY4RLvDggnvN4DTo",
+      authDomain: "pcgwebsite-bad7c.firebaseapp.com",
+      databaseURL: "https://pcgwebsite-bad7c.firebaseio.com",
+      projectId: "pcgwebsite-bad7c",
+      storageBucket: "pcgwebsite-bad7c.appspot.com",
+      messagingSenderId: "697691612275"
+    };
+    firebase.initializeApp(config);
+  </script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
