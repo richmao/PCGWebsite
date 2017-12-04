@@ -10,18 +10,18 @@ hr{
 }
 
 h4.title{
-    color: #4a598c;
+    /*color: blue;*/
 }
 
 h4.box{
-    color: white;
+    /*color: white;*/
     background-color: #7382b5;
     height:1.5em;
     padding-top: .2em;
 }
 
 h5.box{
-    color: white;
+    /*color: white;*/
     background-color: #7382b5;
     height:1.4em;
     padding-top: .25em;
@@ -104,7 +104,7 @@ tr.box{
 }
 
 tr.boxHolder{
-    border: solid;  
+    border: solid;
 }
 
 th.schedule{
@@ -132,7 +132,7 @@ th.box{
 }
 
 td.schedule{
-    border:solid;  
+    border:solid;
 }
 
 td.vertSpacer{
@@ -157,7 +157,7 @@ td.box{
 
 td.boxLink{
     color:blue;
-    text-decoration: underline; 
+    text-decoration: underline;
     background-color: #d6dfef;
     padding-top: .4em;
     padding-left: .4em;
