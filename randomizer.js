@@ -1,11 +1,45 @@
-var x = document.getElementsByTagName("*");
-console.log(x);
+var app = function() {
+    self.initialize = function () {
+        console.log('initialize');
+    };
 
-// Currently just changes color, assuming you know the selector
-function changeStyle(selector, color) {
-    console.log('changing ' + selector + ' to ' + color);
-    $('<style>' + selector + ' { color: ' + color + ';</style>').appendTo('head');
-}
+    self.reset = function() {
+        console.log('reset');
+    };
 
-changeStyle('h4.title', 'blue');
-changeStyle('h4.box', 'white');
+    self.randomColor = function() {
+        var colors = ["red", "green", "blue"];
+        var random = Math.floor(Math.random() * colors.length);
+        console.log('color chosen: ' + colors[random]);
+        return colors[random];
+    }
+
+    self.vue = new Vue({
+        el: "#vue-div",
+        delimiters: ['${', '}'],
+        unsafeDelimiters: ['!{', '}'],
+        data: {
+            styleObject: {
+                color: randomColor()
+            }
+        },
+        methods: {
+            reset: self.reset,
+            randomColor: self.randomColor
+        }
+
+    });
+
+    self.reset();
+
+    return self;
+};
+
+var APP = null;
+
+// This will make everything accessible from the js console;
+// for instance, self.x above would be accessible as APP.x
+jQuery(function(){
+    APP = app();
+    APP.initialize();
+});

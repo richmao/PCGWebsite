@@ -10,11 +10,11 @@ hr{
 }
 
 h4.title{
-    /*color: blue;*/
+    color: blue;
 }
 
 h4.box{
-    /*color: white;*/
+    color: white;
     background-color: #7382b5;
     height:1.5em;
     padding-top: .2em;
