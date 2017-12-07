@@ -184,10 +184,10 @@ td.boxDescriptor{
     padding-bottom: .2em;
 }
 
-.red {
+h4.red {
 	color: red;
 }
 
-.gree {
+h4.green {
 	color: green;
 }
