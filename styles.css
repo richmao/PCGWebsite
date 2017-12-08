@@ -11,6 +11,7 @@ hr{
 
 h4.title{
     color: blue;
+    text-size: 200%;
 }
 
 h4.box{
@@ -184,10 +185,86 @@ td.boxDescriptor{
     padding-bottom: .2em;
 }
 
+/* h4 */
 h4.red {
 	color: red;
 }
-
 h4.green {
 	color: green;
+}
+h4.big {
+    font-size: 200%;
+}
+h4.small {
+    font-size: 50%;
+}
+
+/* h5 */
+h5.red {
+	color: red;
+}
+h5.green {
+	color: green;
+}
+h5.big {
+    font-size: 200%;
+}
+h5.small {
+    font-size: 50%;
+}
+
+/* p */
+p.red {
+    color: red;
+}
+p.green {
+    color: green;
+}
+p.big {
+    font-size: 200%;
+}
+p.small {
+    font-size: 50%;
+}
+
+/* tr */
+tr.red {
+    color: red;
+}
+tr.green {
+    color: green;
+}
+tr.big {
+    font-size: 200%;
+}
+tr.small {
+    font-size: 50%;
+}
+
+/* td */
+td.red {
+    color: red;
+}
+td.green {
+    color: green;
+}
+td.big {
+    font-size: 200%;
+}
+td.small {
+    font-size: 50%;
+}
+
+/* th */
+th.red {
+    color: red;
+}
+th.green {
+    color: green;
+}
+th.big {
+    font-size: 200%;
+}
+th.small {
+    font-size: 50%;
 }
