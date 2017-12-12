@@ -57,35 +57,78 @@ function htmlRedo(){
   $('#ContentRow').append(htmlGrammar.flatten('#origin#'));
 }
 
-cssRedo = function () {
+//should scramble only html section that has class
+function htmlRedoSection(sectionClass){
+  let htmlGrammar = tracery.createGrammar(htmlRules);
+  $('.'+sectionClass+'').empty();
+  let sectionType="";
+  for(let i=0; i < sectionIDs.length; i++){
+    //console.log(sectionClass+"looking for in "+sectionIDs[i]+": "+sectionIDs[i].search(sectionClass));
+    if(sectionClass.search(sectionIDs[i]) != -1){//sectionIDs[i].length){
+      sectionType = sectionIDs[i];
+      break;
+    }
+  }
+  $('.'+sectionClass).append(htmlGrammar.flatten('#'+sectionType+'#'));
+}
+
+//gives a section a unique class anme
+function markSection(sectionID,index){
+  let sections = $('[id='+sectionID+']');
+  let section = sections[index];
+  let newClassName = ""+sectionID+index;
+  section.className += " ";
+  section.className += newClassName;
+  let children = $('.'+newClassName+' *').addClass(newClassName);
+  return newClassName;
+}
+
+cssRedo = function (t) {
     let cssGrammar = tracery.createGrammar(cssRules);
     let tags = ["h5", "h4", "p", "h5", "tr", "td", "th",
         "body", "hr", "h4.title", "h4.box", "h5.box", "h5.button", "p.link", "p.bigLink", "p.linkDescriptor", "p.ender",
         "div.links", "div.vertSpacer", "div#dropdown", "div.border", "img.arrow2", "table.schedule", "table.notSchedule",
         "table.box", "tr.schedule", "tr.box", "tr.boxHolder", "th.schedule", "th.notSchedule", "th.box", "td.schedule",
         "td.vertSpacer", "td.descriptor", "td.link", "td.box", "td.boxLink", "td.boxSpacer", "td.boxEnder", "td.boxDescriptor",
-        "button#reRollB","button#academicsB","button#financesB","button#personalInfoB","button#classButtonB","button#holdsB","button#toDoB","button#enrollmentB","button#recordsB"
+        "button#reRollB", "button#academicsB", "button#financesB", "button#personalInfoB", "button#classButtonB", "button#holdsB", "button#toDoB", "button#enrollmentB", "button#recordsB"
     ];
-    tags.forEach(function (tag) {
-        var toChange = cssGrammar.flatten("#origin#").split(" ");
-        for(let i=0; i < toChange.length; i++){
-          var property = toChange[i];
-          if(property == 'color' || property == 'background-color'){
-              $(tag).css(property, randomColor());
-          }else if(property == 'font-size'){
-              $(tag).css(property, randomSize());
-          }else{
-              $(tag).css(property, cssGrammar.flatten("#" +property+ "#"));
-          }
-        }
-    });
+    if(t == ""){
+        tags.forEach(function (tag) {
+            var toChange = cssGrammar.flatten("#origin#").split(" ");
+            for (let i = 0; i < toChange.length; i++) {
+                var property = toChange[i];
+                if (property == 'color' || property == 'background-color') {
+                    $(tag).css(property, randomColor());
+                } else if (property == 'font-size') {
+                    $(tag).css(property, randomSize());
+                } else {
+                    $(tag).css(property, cssGrammar.flatten("#" + property + "#"));
+                }
+            }
+        });
+    }
+    else{
+        tags.forEach(function (tag) {
+            var toChange = cssGrammar.flatten("#origin#").split(" ");
+            for (let i = 0; i < toChange.length; i++) {
+                var property = toChange[i];
+                if (property == 'color' || property == 'background-color') {
+                    $('.' + t + ' ' + tag).css(property, randomColor());
+                } else if (property == 'font-size') {
+                    $('.' + t + ' ' + tag).css(property, randomSize());
+                } else {
+                    $('.' + t + ' ' + tag).css(property, cssGrammar.flatten("#" + property + "#"));
+                }
+            }
+        });
+    }
 }
 
 window.onload = function () {
     document.getElementById("reRollB").addEventListener("click", function () {
         htmlRedo();
         resetButtons();
-        cssRedo();
+        cssRedo("");
 
     })
     resetButtons();
@@ -114,12 +157,17 @@ function resetButtons(){
             let elements = $("[id="+sectionIDs[i]+"]");
             numButtons += elements.length;
             for(let j=0; j < elements.length; j++){
-                $('#buttons').append('<button id="'+buttonIDs[i]+'">'+buttonText[i]+'</button>');
-                document.getElementById(buttonIDs[i]).addEventListener("click", function () {
-                    elements[j].style.color = randomColor();
-                    elements[j].style.textSize = randomSize();
-                    $(elements[j]).css('background-color', randomColor());
-                    $(elements[j]).css('font-size', randomSize());
+                if(j == 0){
+                  $('#buttons').append('<button id="'+buttonIDs[i]+'">'+buttonText[i]+'</button>');
+                }else{
+                  let displayedNum = j+1;
+                  $('#buttons').append('<button id="'+buttonIDs[i]+'">'+buttonText[i]+' '+displayedNum+'</button>');
+                }
+                let buttonsOfType = $('[id="'+buttonIDs[i]+'"]');
+                let newClassName = markSection(sectionIDs[i],j);
+                buttonsOfType[j].addEventListener("click", function () {
+                    htmlRedoSection(newClassName);
+                  	cssRedo(newClassName);
                 });
             }
         }
