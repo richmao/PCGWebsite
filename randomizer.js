@@ -4,7 +4,8 @@ var buttons = []; //dynamically changes with what is on page
 var buttonText = ["Academics","Finances","Personal Information","Class Button","Holds","To Do List","Enrollment","Records"]; //text that goes in the buttons
 
 let htmlRules = {
-  'origin':['#rightStyleColumn#','#leftStyleColumn#'],
+  'origin':['#rowColumns#'],//'#rightStyleColumn#','#leftStyleColumn#'],
+  'rowColumns':['<div class="col-lg-7" >#leftStyleColumn#</div><div class="col-lg-1"><div class="col-lg-3">#rightStyleColumn#</div>','<div class="col-lg-3" >#leftStyleColumn#</div><div class="col-lg-1"><div class="col-lg-7" >#rightStyleColumn#</div>','<div class="col-lg-5" >#leftStyleColumn#</div><div class="col-lg-1"><div class="col-lg-5" >#rightStyleColumn#</div>','<div class="col-lg-3" >#leftStyleColumn#</div><div class="col-lg-1"><div class="col-lg-3">#rightStyleColumn#</div><div class="col-lg-1></div><div class="col-lg-3" >#leftStyleColumn#</div>'],
   'leftStyleColumn':['#sections# #sections# #sections#'],
   'rightStyleColumn':['#sections#<div class=\"vertSpacer\"></div>#sections#<div class=\"vertSpacer\"></div>#sections#<div class=\"vertSpacer\"></div>#sections#<div class=\"vertSpacer\"></div>#sections#'],
   'sections': ['#classButton#','#holds#','#toDo#','#enrollment#','#records#','#academics#','#finances#','#personalInfo#'],
@@ -29,7 +30,8 @@ let htmlRules = {
   'personalInfo':['<div class=\"row\"><div class=\"col-lg-12\" id=\"box\"><h4 class=\"box\"><img src=\"arrow.png\">Personal Information</h4>#personalInfoColumns#</div></div>'],
   'personalInfoContent':['#personalInfoLinks#','<div class=\"vertSpacer\"></div>','<div class=\"row\"><div class=\"col-lg-8\"><div class=\"row\" id=\"dropdown\"><div class=\"col-lg-9\"><p class=\"box\">more links...</p></div><div class=\"col-lg-1\"><img class=\"arrow2\" src=\"arrow2.png\"></div></div></div><div class=\"col-lg-1\"><img src=\"go.png\"></div></div></div><div class=\"col-lg-8\"><table class=\"notSchedule\"><tr class=\"notSchedule\"><th class=\"notSchedule\">Contact Information</th><th class=\"notSchedule\"></th></tr><tr class=\"notSchedule\"><td class=\"link\">Mailing Address</td><td class=\"link\">Billing Address</td></tr><tr class=\"notSchedule\"><td class=\"notSchedule\">1156 High St, Santa Cruz, CA 95064</td><td class=\"notSchedule\">None</td></tr><tr class=\"notSchedule\"><td class=\"link\">Cell Phone</td><td class=\"link\">Campus Email Address</td></tr><tr class=\"notSchedule\"><td class=\"notSchedule\">None</td><td class=\"notSchedule\">chancellor@ucsc.edu</td></tr></table></div>'],
   'personalInfoContentAmount':['#personalInfoContent# #personalInfoContent# #personalInfoContent#', '#personalInfoContent# #personalInfoContent# #personalInfoContent# #personalInfoContent#'],
-  'personalInfoColumns':['<div class=\"col-lg-4\">#personalInfoContentAmount#<div class=\"col-lg-8\">#personalInfoContentAmount#</div><div class=\"col-lg-1\">#personalInfoContentAmount#</div></div><div class=\"col-lg-8\">#personalInfoContentAmount#</div>'],
+  'personalInfoColumns':['<div class=\"col-lg-4\">#personalInfoContentAmount#<div class=\"col-lg-8\">#personalInfoContentAmount#</div>#personalInfoColumnsII#','<div class=\"col-lg-8\">#personalInfoContentAmount#<div class=\"col-lg-4\">#personalInfoContentAmount#</div>#personalInfoColumnsII#','<div class=\"col-lg-6\">#personalInfoContentAmount#<div class=\"col-lg-6\">#personalInfoContentAmount#</div>#personalInfoColumnsII#','<div class=\"col-lg-4\">#personalInfoContentAmount#</div></div><div class=\"col-lg-4\">#personalInfoContentAmount#</div><div class=\"col-lg-4\">#personalInfoContentAmount#</div>#personalInfoColumnsII#'],
+  'personalInfoColumnsII':['<div class=\"col-lg-1\">#personalInfoContentAmount#</div></div><div class=\"col-lg-8\">#personalInfoContentAmount#</div>','<div class=\"col-lg-8\">#personalInfoContentAmount#</div></div><div class=\"col-lg-1\">#personalInfoContentAmount#</div>','<div class=\"col-lg-6\">#personalInfoContentAmount#</div></div><div class=\"col-lg-6\">#personalInfoContentAmount#</div>','<div class=\"col-lg-4\">#personalInfoContentAmount#</div></div><div class=\"col-lg-4\">#personalInfoContentAmount#</div><div class=\"col-lg-4\">#personalInfoContentAmount#</div>'],
   'personalInfoLinks':['<div class=\"links\">#personalInfoLink# #personalInfoLink# #personalInfoLink# #personalInfoLink# #personalInfoLink# #personalInfoLink#</div>'],
   'personalInfoLink':['<p class=\"link\">#personalInfoLinkContent#</p>','<p class=\"bigLink\">#personalInfoLinkContent#</p>'],
   'personalInfoLinkContent':['Names','Private Policy','Mailing Address','Cell Phone','Billing Address', 'Campus Email Address'],
@@ -37,7 +39,8 @@ let htmlRules = {
   'finances':['<div class=\"row\"><div class=\"col-lg-12\" id=\"box\"><h4 class=\"box\"><img src=\"arrow.png\">Finances</h4>#financesColumns#</div></div>'],
   'financesContent':['#financesLinks#','<div class=\"vertSpacer\"></div>','<div class=\"row\"><div class=\"col-lg-8\"><div class=\"row\" id=\"dropdown\"><div class=\"col-lg-9\"><p class=\"box\">more links...</p></div><div class=\"col-lg-1\"><img class=\"arrow2\" src=\"arrow2.png\"></div></div></div><div class=\"col-lg-1\"><img src=\"go.png\"></div></div>','<div class=\"col-lg-8\"><table class=\"notSchedule\"><tr class=\"notSchedule\"><th class=\"notSchedule\">Account Summary</th><th class=\"notSchedule\"></th></tr><tr class=\"notSchedule\"><td class=\"descriptor\">You owe 6,969.69</td><td class=\"link\">View Charges Due Date</td></tr><tr class=\"notSchedule\"><td class=\"vertSpacer\"></td><td class=\"vertSpacer\"></td></tr><tr class=\"notSchedule\"><th>Currency is US Dollars</th><th></th></table></div>'],
   'financesContentAmount':['#financesContent# #financesContent# #financesContent#', '#financesContent# #financesContent# #financesContent# #financesContent# #financesContent#'],
-  'financesColumns':['<div class=\"col-lg-4\">#financesContentAmount#</div><div class=\"col-lg-8\">#financesContentAmount#</div><div class=\"col-lg-1\">#financesContentAmount#</div><div class=\"col-lg-8\">#financesContentAmount#</div>'],
+  'financesColumns':['<div class=\"col-lg-4\">#financesContentAmount#</div><div class=\"col-lg-8\">#financesContentAmount#</div>#financesColumnsII#','<div class=\"col-lg-8\">#financesContentAmount#</div><div class=\"col-lg-4\">#financesContentAmount#</div>#financesColumnsII#','<div class=\"col-lg-4\">#financesContentAmount#</div><div class=\"col-lg-4\">#financesContentAmount#</div><div class=\"col-lg-4\">#financesContentAmount#</div>#financesColumnsII#'],
+  'financesColumnsII':['<div class=\"col-lg-1\">#financesContentAmount#</div><div class=\"col-lg-8\">#financesContentAmount#</div>','<div class=\"col-lg-8\">#financesContentAmount#</div><div class=\"col-lg-1\">#financesContentAmount#</div>','<div class=\"col-lg-6\">#financesContentAmount#</div><div class=\"col-lg-6\">#financesContentAmount#</div>','<div class=\"col-lg-4\">#financesContentAmount#</div><div class=\"col-lg-4\">#financesContentAmount#</div><div class=\"col-lg-4\">#financesContentAmount#</div>'],
   'financesLinks':['<div class=\"links\">#financesLink# #financesLink# #financesLink# #financesLink#</div>'],
   'financesLinkContent':['Account Inquiry','View Financial Aid','Accept/Decline Financial Aid','Report Other Financial Aid','Payment Estimator'],
   'financesLink':['<p class=\"link\">#financesLinkContent#</p>'],
@@ -46,13 +49,8 @@ let htmlRules = {
 function htmlRedo(){
   let htmlGrammar = tracery.createGrammar(htmlRules);
 
-  let rightColumn = document.getElementById('rightColumn');
-  $('#rightColumn').empty();
-  $("#rightColumn").append(htmlGrammar.flatten('#origin#'));
-
-  let leftColumn = document.getElementById('leftColumn');
-  $('#leftColumn').empty();
-  $("#leftColumn").append(htmlGrammar.flatten('#origin#'));
+  $('#ContentRow').empty();  
+  $('#ContentRow').append(htmlGrammar.flatten('#origin#'));
 }
 
 cssGrammar = function () {
