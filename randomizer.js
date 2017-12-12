@@ -46,6 +46,13 @@ let htmlRules = {
   'financesLink':['<p class=\"link\">#financesLinkContent#</p>'],
 }
 
+let cssRules = {
+    'font-family': ['Impact', '\"Comic Sans MS\"', '\"Lucida Console\"', '\'Gloria Hallelujah\', cursive', '\'Bonbon\', cursive'],
+    'text-align': ['left', 'right', 'center', 'justify', 'initial', 'inherit'],
+    'properties': ['font-family', 'text-align'],
+    'origin': ['font-family text-align color background-color font-size']
+}
+
 function htmlRedo(){
   let htmlGrammar = tracery.createGrammar(htmlRules);
 
@@ -54,12 +61,6 @@ function htmlRedo(){
 }
 
 cssGrammar = function () {
-    let cssRules = {
-        'font-family': ['Impact', '\"Comic Sans MS\"', '\"Lucida Console\"', '\'Gloria Hallelujah\', cursive', '\'Bonbon\', cursive'],
-        'text-align': ['left', 'right', 'center', 'justify', 'initial', 'inherit'],
-        'properties': ['font-family', 'text-align'],
-        'origin':['font-family text-align color background-color font-size']
-    }
     let cssGrammar = tracery.createGrammar(cssRules);
     let tags = ["h5", "h4", "p", "h5", "tr", "td", "th",
         "body", "hr", "h4.title", "h4.box", "h5.box", "h5.button", "p.link", "p.bigLink", "p.linkDescriptor", "p.ender",
@@ -118,6 +119,8 @@ function resetButtons(){
                 document.getElementById(buttonIDs[i]).addEventListener("click", function () {
                     elements[j].style.color = randomColor();
                     elements[j].style.textSize = randomSize();
+                    $(elements[j]).css('background-color', randomColor());
+                    $(elements[j]).css('font-size', randomSize());
                 });
             }
         }
