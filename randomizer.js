@@ -46,7 +46,11 @@ let htmlRules = {
 let cssRules = {
     'font-family': ['Impact', '\"Comic Sans MS\"', '\"Lucida Console\"', '\'Gloria Hallelujah\', cursive', '\'Bonbon\', cursive'],
     'text-align': ['left', 'right', 'center', 'justify', 'initial', 'inherit'],
-    'properties': ['font-family', 'text-align'],
+    'color':['#hexDigit##hexDigit##hexDigit##hexDigit##hexDigit##hexDigit#'],
+    'background-color':['#hexDigit##hexDigit##hexDigit##hexDigit##hexDigit##hexDigit#'],
+    'hexDigit':['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'],
+    'font-size':['#size# px'],
+    'sizes':['12','13','14','15','16','17','18','19','20','21','22','23','24'],
     'origin': ['font-family text-align color background-color font-size']
 }
 
@@ -99,9 +103,7 @@ cssRedo = function (t) {
             for (let i = 0; i < toChange.length; i++) {
                 var property = toChange[i];
                 if (property == 'color' || property == 'background-color') {
-                    $(tag).css(property, randomColor());
-                } else if (property == 'font-size') {
-                    $(tag).css(property, randomSize());
+                    $(tag).css(property, '#'+cssGrammar.flatten("#" + property + "#"));
                 } else {
                     $(tag).css(property, cssGrammar.flatten("#" + property + "#"));
                 }
@@ -115,10 +117,7 @@ cssRedo = function (t) {
             for (let i = 0; i < toChange.length; i++) {
                 var property = toChange[i];
                 if (property == 'color' || property == 'background-color') {
-                    $('.' + t + ' ' + tag).css(property, randomColor());
-                } else if (property == 'font-size') {
-                    $('.' + t + ' ' + tag).css(property, randomSize());
-                } else {
+                    $('.' + t + ' ' + tag).css(property, '#'+cssGrammar.flatten("#" + property + "#"));                } else {
                     $('.' + t + ' ' + tag).css(property, cssGrammar.flatten("#" + property + "#"));
                 }
             }
@@ -134,16 +133,6 @@ window.onload = function () {
 
     })
     resetButtons();
-}
-
-//https://www.paulirish.com/2009/random-hex-color-code-snippets/
-function randomColor() {
-    return '#' + Math.floor(Math.random() * 16777215).toString(16);
-}
-
-//https://stackoverflow.com/questions/45791859/random-font-size-and-set-a-min-and-max-of-the-character
-function randomSize() {
-    return Math.floor((Math.random() * 12) + 12) + "px";
 }
 
 function resetButtons() {
